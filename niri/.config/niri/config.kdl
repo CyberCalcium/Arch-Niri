@@ -1,0 +1,327 @@
+/*
+  ___  _   _ _____ _____ _____ _____ ___  ______ _____
+ / _ \| | | |_   _|  _  /  ___|_   _/ _ \ | ___ \_   _|
+/ /_\ \ | | | | | | | | \ `--.  | |/ /_\ \| |_/ / | |
+|  _  | | | | | | | | | |`--. \ | ||  _  ||    /  | |
+| | | | |_| | | | \ \_/ /\__/ / | || | | || |\ \  | |
+\_| |_/\___/  \_/  \___/\____/  \_/\_| |_/\_| \_| \_/
+*/
+
+    spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+    // spawn-at-startup "swaybg -i ~/route/to_your/file.png -m fill"
+
+    spawn-at-startup "waybar"
+    spawn-at-startup "xwayland-satellite"
+    spawn-at-startup "mako"
+
+    spawn-sh-at-startup "swayidle -w"
+    spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
+    spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
+
+/*
+ _   __ _______   _______ _____ _   _______  _____
+| | / /|  ___\ \ / / ___ \_   _| \ | |  _  \/  ___|
+| |/ / | |__  \ V /| |_/ / | | |  \| | | | |\ `--.
+|    \ |  __|  \ / | ___ \ | | | . ` | | | | `--. \
+| |\  \| |___  | | | |_/ /_| |_| |\  | |/ / /\__/ /
+\_| \_/\____/  \_/ \____/ \___/\_| \_/___/  \____/
+*/
+
+binds {
+
+    MOD+SHIFT+ESCAPE                    { show-hotkey-overlay; }
+
+    // ─── Applications ───
+    MOD+RETURN                          hotkey-overlay-title="Open Terminal: kitty" { spawn "kitty"; }
+    MOD+D                               hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    MOD+B                               hotkey-overlay-title="Open Browser: firefox" { spawn "firefox"; }
+    MOD+ALT+L                           hotkey-overlay-title="Logout Menu: wlogout" { spawn "wlogout"; }
+
+    // Please choose your own file manager.
+    MOD+E                               hotkey-overlay-title="File Manager: yazi" { spawn-sh "kitty yazi"; }
+
+    // ─── Audio Controls ───
+    XF86AUDIORAISEVOLUME                allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
+    XF86AUDIOLOWERVOLUME                allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+    XF86AUDIOMUTE                       allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    XF86AUDIOMICMUTE                    allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+
+    // ─── Brightness Controls ───
+    XF86MonBrightnessUp                 allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
+    XF86MonBrightnessDown               allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+
+    // ─── Window Movement and Focus ───
+    MOD+Q                               { close-window; }
+
+    MOD+LEFT                            { focus-column-left; }
+    MOD+H                               { focus-column-left; }
+    MOD+RIGHT                           { focus-column-right; }
+    MOD+L                               { focus-column-right; }
+    MOD+UP                              { focus-window-up; }
+    MOD+K                               { focus-window-up; }
+    MOD+DOWN                            { focus-window-down; }
+    MOD+J                               { focus-window-down; }
+
+    MOD+CTRL+LEFT                       { move-column-left; }
+    MOD+CTRL+H                          { move-column-left; }
+    MOD+CTRL+RIGHT                      { move-column-right; }
+    MOD+CTRL+L                          { move-column-right; }
+    MOD+CTRL+UP                         { move-window-up; }
+    MOD+CTRL+K                          { move-window-up; }
+    MOD+CTRL+DOWN                       { move-window-down; }
+    MOD+CTRL+J                          { move-window-down; }
+
+    MOD+HOME                            { focus-column-first; }
+    MOD+END                             { focus-column-last; }
+    MOD+CTRL+HOME                       { move-column-to-first; }
+    MOD+CTRL+END                        { move-column-to-last; }
+
+    MOD+SHIFT+LEFT                      { focus-monitor-left; }
+    MOD+SHIFT+RIGHT                     { focus-monitor-right; }
+    MOD+SHIFT+UP                        { focus-monitor-up; }
+    MOD+SHIFT+DOWN                      { focus-monitor-down; }
+
+    MOD+SHIFT+CTRL+LEFT                 { move-column-to-monitor-left; }
+    MOD+SHIFT+CTRL+RIGHT                { move-column-to-monitor-right; }
+    MOD+SHIFT+CTRL+UP                   { move-column-to-monitor-up; }
+    MOD+SHIFT+CTRL+DOWN                 { move-column-to-monitor-down; }
+
+    // ─── Workspace Switching ───
+    MOD+WHEELSCROLLDOWN                 cooldown-ms=150 { focus-workspace-down; }
+    MOD+WHEELSCROLLUP                   cooldown-ms=150 { focus-workspace-up; }
+    MOD+CTRL+WHEELSCROLLDOWN            cooldown-ms=150 { move-column-to-workspace-down; }
+    MOD+CTRL+WHEELSCROLLUP              cooldown-ms=150 { move-column-to-workspace-up; }
+
+    MOD+WHEELSCROLLRIGHT                { focus-column-right; }
+    MOD+WHEELSCROLLLEFT                 { focus-column-left; }
+    MOD+CTRL+WHEELSCROLLRIGHT           { move-column-right; }
+    MOD+CTRL+WHEELSCROLLLEFT            { move-column-left; }
+
+    MOD+SHIFT+WHEELSCROLLDOWN           { focus-column-right; }
+    MOD+SHIFT+WHEELSCROLLUP             { focus-column-left; }
+    MOD+CTRL+SHIFT+WHEELSCROLLDOWN      { move-column-right; }
+    MOD+CTRL+SHIFT+WHEELSCROLLUP        { move-column-left; }
+
+    MOD+1                               { focus-workspace 1; }
+    MOD+2                               { focus-workspace 2; }
+    MOD+3                               { focus-workspace 3; }
+    MOD+4                               { focus-workspace 4; }
+    MOD+5                               { focus-workspace 5; }
+    MOD+6                               { focus-workspace 6; }
+    MOD+7                               { focus-workspace 7; }
+    MOD+8                               { focus-workspace 8; }
+    MOD+9                               { focus-workspace 9; }
+
+    MOD+CTRL+1                          { move-column-to-workspace 1; }
+    MOD+CTRL+2                          { move-column-to-workspace 2; }
+    MOD+CTRL+3                          { move-column-to-workspace 3; }
+    MOD+CTRL+4                          { move-column-to-workspace 4; }
+    MOD+CTRL+5                          { move-column-to-workspace 5; }
+    MOD+CTRL+6                          { move-column-to-workspace 6; }
+    MOD+CTRL+7                          { move-column-to-workspace 7; }
+    MOD+CTRL+8                          { move-column-to-workspace 8; }
+    MOD+CTRL+9                          { move-column-to-workspace 9; }
+
+    MOD+TAB                             { focus-workspace-previous; }
+
+    // ─── Layout Controls ───
+
+    MOD+F                               { expand-column-to-available-width; }
+    MOD+C                               { center-column; }
+    MOD+CTRL+C                          { center-visible-columns; }
+    MOD+MINUS                           { set-column-width "-10%"; }
+    MOD+EQUAL                           { set-column-width "+10%"; }
+    MOD+SHIFT+MINUS                     { set-window-height "-10%"; }
+    MOD+SHIFT+EQUAL                     { set-window-height "+10%"; }
+
+    // ─── Modes ───
+    MOD+T                               { toggle-window-floating; }
+    MOD+CTRL+F                          { fullscreen-window; }
+    MOD+W                               { toggle-column-tabbed-display; }
+
+    // ─── Screenshots ───
+    Print                               { screenshot; }
+    Ctrl+Print                          { screenshot-screen; }
+    Alt+Print                           { screenshot-window; }
+
+    // ─── Emergency Escape Key ───
+    // Use this when a fullscreen app blocks your keybinds.
+    // It disables any active keyboard shortcut inhibitor, restoring control.
+    MOD+ESCAPE                          allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+    // ─── Exit / Power ───
+    MOD+SHIFT+Q                         { quit; }
+    MOD+SHIFT+E                         { spawn "~/Documentos/niri/niri\ dotfiles/scripts/power-menu.sh"; }
+    MOD+O                               repeat=false { toggle-overview; }
+}
+
+/*
+ _____ _   _ ______ _   _ _____
+|_   _| \ | || ___ \ | | |_   _|
+  | | |  \| || |_/ / | | | | |
+  | | | . ` ||  __/| | | | | |
+ _| |_| |\  || |   | |_| | | |
+ \___/\_| \_/\_|    \___/  \_/
+*/
+
+input {
+    keyboard {
+        xkb {
+            layout "latam"
+        }
+        numlock
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+    }
+
+    focus-follows-mouse
+    workspace-auto-back-and-forth
+}
+
+/*
+ _____ _   _ ___________ _   _ _____
+|  _  | | | |_   _| ___ \ | | |_   _|
+| | | | | | | | | | |_/ / | | | | |
+| | | | | | | | | |  __/| | | | | |
+\ \_/ / |_| | | | | |   | |_| | | |
+ \___/ \___/  \_/ \_|    \___/  \_/
+*/
+
+// You can run `niri msg outputs` to get the correct name for your displays.
+// You will have to remove "/-" and edit it before it takes effect.
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
+
+/- output "DP-1" {
+    mode "2560x1440@359.979" // Set resolution and refresh rate
+    scale 1 // No scaling (use 2 for HiDPI)
+}
+
+/*
+ _       _____   _______ _   _ _____
+| |     / _ \ \ / /  _  | | | |_   _|
+| |    / /_\ \ V /| | | | | | | | |
+| |    |  _  |\ / | | | | | | | | |
+| |____| | | || | \ \_/ / |_| | | |
+\_____/\_| |_/\_/  \___/ \___/  \_/
+*/
+
+layout {
+    gaps 16
+    center-focused-column "never"
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    default-column-width { proportion 0.5; }
+
+    focus-ring {
+        width 4
+        active-color "#07b5ef"
+        inactive-color "#ffffff00"
+    }
+
+    border {
+        off
+    }
+
+    shadow {
+        on
+        softness 40
+        spread 5
+        offset x=0 y=5
+        color "#0007"
+    }
+}
+
+/*
+______ _   _ _      _____ _____
+| ___ \ | | | |    |  ___/  ___|
+| |_/ / | | | |    | |__ \ `--.
+|    /| | | | |    |  __| `--. \
+| |\ \| |_| | |____| |___/\__/ /
+\_| \_|\___/\_____/\____/\____/
+*/
+
+window-rule {
+    geometry-corner-radius 20
+    clip-to-geometry true
+}
+
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+window-rule {
+    match title=r#"(?i)(authentication|required|password|polkit)"#
+    open-floating true
+}
+
+window-rule {
+    match title=r#".*(Dialog|Properties|Preferences|Settings|Rename).*"#
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"(xdg-desktop-portal-gtk|org\.gtk\.GtkFileChooserDialog)"#
+    open-floating true
+    max-width 900
+    max-height 900
+}
+
+window-rule {
+    match app-id=r#"blueman-manager"#
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"pavucontrol"#
+    open-floating true
+}
+
+// Steam dialogs
+window-rule {
+    match app-id=r#"steam"# title=r#".*(Friends|Settings|Properties).*"#
+    open-floating true
+}
+
+/*
+___  ________ _____ _____  _____ _      _       ___   _   _  _____ _____ _   _ _____
+|  \/  |_   _/  ___/  __ \|  ___| |    | |     / _ \ | \ | ||  ___|  _  | | | /  ___|
+| .  . | | | \ `--.| /  \/| |__ | |    | |    / /_\ \|  \| || |__ | | | | | | \ `--.
+| |\/| | | |  `--. \ |    |  __|| |    | |    |  _  || . ` ||  __|| | | | | | |`--. \
+| |  | |_| |_/\__/ / \__/\| |___| |____| |____| | | || |\  || |___\ \_/ / |_| /\__/ /
+\_|  |_/\___/\____/ \____/\____/\_____/\_____/\_| |_/\_| \_/\____/ \___/ \___/\____/
+*/
+
+prefer-no-csd
+screenshot-path "~/Pictures/Screenshots/%Y-%m-%d %H-%M-%S.png"
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+environment {
+    XDG_SESSION_TYPE "wayland"
+    XDG_CURRENT_DESKTOP "niri"
+
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+
+    QT_QPA_PLATFORM "wayland;xcb"
+    QT_QPA_PLATFORMTHEME "gtk3"
+    QT_QPA_PLATFORMTHEME_QT6 "gtk3"
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+
+    GDK_BACKEND "wayland,x11"
+
+    MOZ_ENABLE_WAYLAND "1"
+
+    SDL_VIDEODRIVER "wayland"
+    CLUTTER_BACKEND "wayland"
+}

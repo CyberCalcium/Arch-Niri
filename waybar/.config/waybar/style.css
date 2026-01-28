@@ -1,0 +1,143 @@
+/* === Global sizing baseline === */
+
+* {
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+}
+
+window#waybar {
+    background: #000000;
+    font-family: Iosevka, monospace;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+window#waybar > box {
+    background: #090909;
+}
+
+/* === Global module defaults ===*/
+
+#cpu,
+#memory,
+#custom-separator,
+#workspaces,
+#idle_inhibitor,
+#custom-weather,
+#window,
+#pulseaudio,
+#backlight,
+#network,
+#battery,
+#clock,
+#custom-power,
+#tray {
+border: none;
+background: transparent;
+color: white;
+opacity: 1;
+}
+
+/* === Standard module spacing ===*/
+
+#cpu,
+#memory,
+#custom-separator,
+#workspaces,
+#idle_inhibitor,
+#custom-weather,
+#window,
+#pulseaudio,
+#backlight,
+#network,
+#battery,
+#clock,
+#custom-power {
+margin: 0px 1px;
+padding: 0px 5px;
+}
+
+/* === Tray area ===*/
+
+#tray {
+margin: 0px 4px;
+padding: 0px 4px;
+background: #000000;
+}
+
+/* === Weather ===*/
+
+#custom-weather {
+padding: 0px 10px;
+}
+
+/* === Window title dim ===*/
+
+#window {
+opacity: 0.5;
+}
+
+/* === Hover transitions ===*/
+
+#idle_inhibitor,
+#pulseaudio,
+#backlight,
+#network,
+#battery,
+#clock,
+#custom-power {
+transition: opacity 0.12s ease;
+}
+
+#idle_inhibitor:hover,
+#pulseaudio:hover,
+#backlight:hover,
+#network:hover,
+#battery:hover,
+#clock:hover,
+#custom-power:hover {
+opacity: 0.75;
+}
+
+/*=== Battery states ===*/
+
+#battery.warning:not(.charging),
+#battery.critical:not(.charging) {
+color: #ff8080;
+}
+
+#battery.plugged:not(.charging) {
+color: #ffb588;
+}
+
+#battery.charging {
+color: #88ff88;
+}
+
+/*=== Workspaces ===*/
+
+#workspaces {
+margin: 0px 2px;
+padding: 0px;
+}
+
+#workspaces button {
+padding: 0px 6px;
+margin: 0px 1px;
+background: transparent;
+border: none;
+color: #888888;
+transition: color 0.12s ease, opacity 0.08s ease;
+}
+
+#workspaces button.focused { color: #ffffff; }
+#workspaces button.urgent  { color: #ff8080; }
+#workspaces button:hover:not(.visible) { color: #bbbbbb; }
+
+/*=== Tooltip ===*/
+
+tooltip {
+    border-radius: 6px;
+    background: black;
+}

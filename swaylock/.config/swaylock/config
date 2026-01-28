@@ -1,0 +1,24 @@
+ignore-empty-password
+daemonize
+show-failed-attempts
+indicator-idle-visible
+line-uses-ring
+
+font=JetBrainsMono Nerd Font
+font-size=18
+indicator-radius=95
+indicator-thickness=12
+
+clock
+timestr=%H:%M
+
+effect-blur=8x3
+effect-vignette=0.3:0.7
+fade-in=0.15
+
+color=1e1e2e
+ring-color=313244
+key-hl-color=b7bdf8
+text-color=b7bdf8
+inside-ver-color=b7bdf8
+ring-ver-color=b7bdf8

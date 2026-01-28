@@ -1,0 +1,163 @@
+// =============================
+// === Waybar modules config ===
+// =============================
+{
+  "reload_style_on_change": true,
+  "layer": "background",
+  "height": 32,
+  // "width": 990,
+  "spacing": 0,
+  "modules-left": [
+    "cpu",
+    "memory",
+    "custom/separator",
+    "niri/workspaces",
+    "custom/separator",
+    "custom/weather",
+    "idle_inhibitor",
+    "custom/separator",
+    "niri/window"
+  ],
+  "modules-center": [
+  ],
+  "modules-right": [
+    "tray",
+    "custom/separator",
+    "pulseaudio",
+    "backlight",
+    "custom/separator",
+    "network",
+    "battery",
+    "custom/separator",
+    "clock",
+    "custom/separator",
+    "custom/power"
+  ],
+
+
+  // Modules configuration
+  "cpu": {
+    "format": "  {usage}%",
+    "on-click": "kitty -e htop",
+    "tooltip": false
+  },
+  "memory": {
+    "format": "  {}%",
+    "on-click": "kitty -e htop"
+  },
+    "niri/workspaces": {
+        "disable-scroll": true,
+        "format": "{index}",
+        "persistent-workspaces": {
+            "*": [1,2,3,4,5,6,7,8,9]
+        }
+    },
+  "niri/window": {
+    "format": " {title}",
+    "max-length": 40,
+    "separate-outputs": false,
+    "tooltip": false
+  },
+
+  "idle_inhibitor": {
+      "format": "{icon}",
+      "format-icons": {
+          "activated": "",
+          "deactivated": ""
+      }
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 13
+  },
+
+    "clock": {
+        "format": "󰅐 {:%I:%M %p}",
+        "tooltip-format": " {:%A %m/%d}\n\n<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "on-scroll": 1,
+            "format": {
+                "months":     "<span color='#ffead3'><b>{}</b></span>",
+                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+            },
+        },
+        "actions": {
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        },
+    },
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": ["󰄰", "󰪞", "󰪟", "󰪠", "󰪡", "󰪢", "󰪣", "󰪤", "󰪥"],
+    "tooltip-format": "Backlight (Scroll): {percent:}%",
+    "scroll-step": 5
+  },
+  "battery": {
+    "states": {
+        "warning": 20,
+        "critical": 10
+    },
+    "format": "{icon}",
+    "format-charging": " {icon}",
+    "format-plugged": " {icon}",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "interval": 3,
+    "tooltip-format": "Bateria al {capacity}%"
+  },
+  "network": {
+    "format": "{icon}",
+    "format-wifi": "{icon}",
+    "tooltip-format-wifi": "Conectado a {essid} | ({signalStrength}%",
+    "format-ethernet": "󰈀  {ipaddr}/{cidr}",
+    "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr}",
+    "format-disconnected": "󰤮 ",
+    "tooltip": false,
+    "on-click": "kitty --class float -e nmtui",
+    "format-icons": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "]
+  },
+  "pulseaudio": {
+    "scroll-step": 5,
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{icon}  {volume}%",
+    "format-bluetooth-muted": "{icon}  0%",
+    "format-muted": "󰝟  0%",
+    "format-source": " {volume}%",
+    "format-source-muted": " ",
+    "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["󰕿", "󰖀", "󰕾"]
+    },
+    "on-click": "pamixer --toggle-mute",
+    "on-click-right": "pavucontrol",
+    "tooltip-format": "{volume}%",
+    "tooltip": true
+  },
+  "custom/bluetooth": {
+    "format": "",
+    "on-click": "blueman-manager",
+    "tooltip": false
+  },
+  "custom/separator": {
+    "format": "|",
+    "tooltip": false
+  },
+  "custom/weather": {
+    "exec": "~/Documentos/niri/niri-dotfiles/scripts/weather.sh",
+    "tooltip": true,
+    "interval": 600,
+    "format": "{}"
+},
+  "custom/power": {
+    "format": "󰤆 ",
+    "on-click": "~/Documentos/niri/niri-dotfiles/scripts/power-menu.sh",
+    "tooltip": false
+  }
+}

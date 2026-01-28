@@ -1,0 +1,23 @@
+font=Iosevka 12
+
+background-color=#1a1a1dee
+text-color=#d6d6d6
+width=320
+height=180
+padding=10
+margin=10
+progress-color=#e0e0e0
+icon-path=/usr/share/icons/Papirus-Dark
+max-icon-size=64
+layer=overlay
+
+border-size=2
+border-radius=8
+border-color=#e0e0e0
+
+default-timeout=5000
+
+[urgency=high]
+border-color=#da4343
+text-color=#ffffff
+ignore-timeout=1
