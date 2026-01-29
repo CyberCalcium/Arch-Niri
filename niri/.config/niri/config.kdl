@@ -47,8 +47,8 @@ binds {
     XF86AUDIOMICMUTE                    allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
     // ─── Brightness Controls ───
-    XF86MonBrightnessUp                 allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown               allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+    XF86MonBrightnessUp                 allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+5%"; }
+    XF86MonBrightnessDown               allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "5%-"; }
 
     // ─── Window Movement and Focus ───
     MOD+Q                               { close-window; }
@@ -151,7 +151,7 @@ binds {
 
     // ─── Exit / Power ───
     MOD+SHIFT+Q                         { quit; }
-    MOD+SHIFT+E                         { spawn "~/Documentos/niri/niri\ dotfiles/scripts/power-menu.sh"; }
+    MOD+SHIFT+E                         { spawn "~/Documentos/niri/niri-dotfiles/scripts/power-menu.sh"; }
     MOD+O                               repeat=false { toggle-overview; }
 }
 
@@ -222,8 +222,8 @@ layout {
 
     focus-ring {
         width 4
-        active-color "#07b5ef"
-        inactive-color "#ffffff00"
+        active-color "#DFE0E0"
+        inactive-color "#3F3F3F"
     }
 
     border {

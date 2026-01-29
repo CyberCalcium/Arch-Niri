@@ -38,12 +38,12 @@
   // Modules configuration
   "cpu": {
     "format": "  {usage}%",
-    "on-click": "kitty -e htop",
+    "on-click": "kitty -e btop",
     "tooltip": false
   },
   "memory": {
     "format": "  {}%",
-    "on-click": "kitty -e htop"
+    "on-click": "kitty -e btop"
   },
     "niri/workspaces": {
         "disable-scroll": true,
@@ -110,13 +110,13 @@
   "network": {
     "format": "{icon}",
     "format-wifi": "{icon}",
-    "tooltip-format-wifi": "Conectado a {essid} | ({signalStrength}%",
+    "tooltip-format-wifi": "Conectado a {essid} | ({signalStrength}%)",
     "format-ethernet": "󰈀  {ipaddr}/{cidr}",
     "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr}",
     "format-disconnected": "󰤮 ",
-    "tooltip": false,
+    "tooltip": true,
     "on-click": "kitty --class float -e nmtui",
-    "format-icons": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "]
+    "format-icons": ["󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "]
   },
   "pulseaudio": {
     "scroll-step": 5,

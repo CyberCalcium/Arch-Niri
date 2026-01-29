@@ -1,23 +1,27 @@
+max-history=5
+markup=1
+actions=1
+history=1
+default-timeout=7000
+sort=+time
+
 font=Iosevka 12
 
-background-color=#1a1a1dee
-text-color=#d6d6d6
+background-color=#090909
+text-color=#FFFFFF
 width=320
 height=180
 padding=10
 margin=10
-progress-color=#e0e0e0
-icon-path=/usr/share/icons/Papirus-Dark
-max-icon-size=64
 layer=overlay
 
 border-size=2
 border-radius=8
-border-color=#e0e0e0
+border-color=#DFE0E0
 
-default-timeout=5000
-
-[urgency=high]
-border-color=#da4343
-text-color=#ffffff
-ignore-timeout=1
+[urgency=critical]
+border-color=#F15D4F
+background-color=#090909
+text-color=#FFFFFF
+default-timeout=0
+layer=overlay

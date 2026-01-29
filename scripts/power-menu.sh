@@ -1,9 +1,9 @@
 #!/bin/bash
 
-OPCIONES="⏻  Apagar\n󰑐  Reiniciar\n󰤄  Suspender\n󰗼  Cerrar Sesión"
+OPCIONES="⏻  Apagar\n󰑐  Reiniciar\n󰌾  Bloquear la Sesión\n󰤄  Suspender\n󰗼  Cerrar Sesión"
 
 SELECCION=$(printf "%b" "$OPCIONES" | \
-    fuzzel --dmenu -p "Menú de Energía: " --width 20 --lines 4 --anchor center) || exit 0
+    fuzzel --dmenu -p "Menú de Energía: " --width 23 --lines 5 --anchor center) || exit 0
 
 [ -z "$SELECCION" ] && exit 0
 
@@ -13,6 +13,9 @@ case "$SELECCION" in
         ;;
     *Reiniciar)
         systemctl reboot
+        ;;
+    *Bloquear)
+        swaylock
         ;;
     *Suspender)
         if command -v swaylock >/dev/null; then
