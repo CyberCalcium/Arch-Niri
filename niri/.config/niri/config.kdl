@@ -35,10 +35,7 @@ binds {
     MOD+RETURN                          hotkey-overlay-title="Open Terminal: kitty" { spawn "kitty"; }
     MOD+D                               hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     MOD+B                               hotkey-overlay-title="Open Browser: firefox" { spawn "firefox"; }
-    MOD+ALT+L                           hotkey-overlay-title="Logout Menu: wlogout" { spawn "wlogout"; }
-
-    // Please choose your own file manager.
-    MOD+E                               hotkey-overlay-title="File Manager: yazi" { spawn-sh "kitty yazi"; }
+    MOD+E                               hotkey-overlay-title="File Manager: nautilus" { spawn "nautilus"; }
 
     // ─── Audio Controls ───
     XF86AUDIORAISEVOLUME                allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
@@ -75,6 +72,8 @@ binds {
     MOD+END                             { focus-column-last; }
     MOD+CTRL+HOME                       { move-column-to-first; }
     MOD+CTRL+END                        { move-column-to-last; }
+
+    // --- Monitor Management --- //
 
     MOD+SHIFT+LEFT                      { focus-monitor-left; }
     MOD+SHIFT+RIGHT                     { focus-monitor-right; }

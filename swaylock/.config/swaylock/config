@@ -6,19 +6,33 @@ line-uses-ring
 
 font=JetBrainsMono Nerd Font
 font-size=18
-indicator-radius=95
-indicator-thickness=12
+
+indicator-radius=92
+indicator-thickness=9
 
 clock
 timestr=%H:%M
 
-effect-blur=8x3
-effect-vignette=0.3:0.7
 fade-in=0.15
+effect-blur=7x4
+effect-vignette=0.25:0.65
 
-color=1e1e2e
-ring-color=313244
-key-hl-color=b7bdf8
-text-color=b7bdf8
-inside-ver-color=b7bdf8
-ring-ver-color=b7bdf8
+# Base colors
+color=1a1a1d
+inside-color=1a1a1d
+ring-color=2d2d2d
+line-color=00000000
+text-color=d6d6d6
+
+# Key input / typing
+key-hl-color=7a8a99
+
+# Verification / success
+inside-ver-color=6f8f6a
+ring-ver-color=6f8f6a
+text-ver-color=ffffff
+
+# Wrong password
+inside-wrong-color=c15a5a
+ring-wrong-color=c15a5a
+text-wrong-color=ffffff
